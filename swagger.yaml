@@ -118,12 +118,18 @@ paths:
                 items:
                   type: object
                   properties:
-                    postId:
+                    id:
+                      type: integer
+                    userid:
                       type: integer
                     author:
                       type: string
+                    title:
+                      type: string
                     content:
                       type: string
+                    comments:
+                      type: integer  # Le nombre de commentaires
     post:
       summary: Créer un nouveau post
       description: Crée un nouveau post
@@ -134,9 +140,12 @@ paths:
             schema:
               type: object
               properties:
+                title:
+                  type: string
                 content:
                   type: string
               required:
+                - title
                 - content
       responses:
         '201':
@@ -163,12 +172,12 @@ paths:
               schema:
                 type: object
                 properties:
-                  userId:
-                    type: integer
-                  username:
-                    type: string
                   nickname:
                     type: string
+                  postcount:
+                    type: integer  # Le nombre de posts de l'utilisateur
+                  userid:
+                    type: integer
         '404':
           description: Utilisateur non trouvé
 
@@ -193,10 +202,18 @@ paths:
                 items:
                   type: object
                   properties:
-                    postId:
+                    id:
                       type: integer
+                    userid:
+                      type: integer
+                    author:
+                      type: string
+                    title:
+                      type: string
                     content:
                       type: string
+                    comments:
+                      type: integer  # Le nombre de commentaires
 
   /users/{nickname}:
     get:
@@ -217,12 +234,12 @@ paths:
               schema:
                 type: object
                 properties:
-                  userId:
-                    type: integer
-                  username:
-                    type: string
                   nickname:
                     type: string
+                  postcount:
+                    type: integer
+                  userid:
+                    type: integer
         '404':
           description: Utilisateur non trouvé
 
@@ -247,10 +264,18 @@ paths:
                 items:
                   type: object
                   properties:
-                    postId:
+                    id:
                       type: integer
+                    userid:
+                      type: integer
+                    author:
+                      type: string
+                    title:
+                      type: string
                     content:
                       type: string
+                    comments:
+                      type: integer  # Le nombre de commentaires
 
   /posts/{postId}/comments:
     get:
@@ -273,7 +298,9 @@ paths:
                 items:
                   type: object
                   properties:
-                    commentId:
+                    id:
+                      type: integer
+                    userid:
                       type: integer
                     author:
                       type: string
