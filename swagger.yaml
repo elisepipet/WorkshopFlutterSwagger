@@ -3,6 +3,11 @@ info:
   title: API de gestion des posts et utilisateurs
   description: API pour la gestion des utilisateurs, des posts, et des commentaires
   version: 1.0.0
+
+servers:
+  - url: https://jepgo.francecentral.cloudapp.azure.com
+    description: Serveur de production
+
 paths:
   /login:
     post:
