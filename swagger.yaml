@@ -8,10 +8,14 @@ servers:
   - url: https://jepgo.francecentral.cloudapp.azure.com
     description: Serveur de production
 
+security:
+  - BearerAuth: []
+
 paths:
   /login:
     post:
       summary: Authentification d'un utilisateur
+      security: []
       description: Authentifie un utilisateur avec ses informations de connexion
       requestBody:
         required: true
@@ -36,6 +40,7 @@ paths:
   /register:
     post:
       summary: Inscription d'un utilisateur
+      security: []
       description: Crée un nouvel utilisateur avec un surnom et un mot de passe
       requestBody:
         required: true
