@@ -15,12 +15,12 @@ paths:
             schema:
               type: object
               properties:
-                username:
+                nickname:
                   type: string
                 password:
                   type: string
               required:
-                - username
+                - nickname
                 - password
       responses:
         '200':
@@ -31,7 +31,7 @@ paths:
   /register:
     post:
       summary: Inscription d'un utilisateur
-      description: Crée un nouvel utilisateur avec un nom d'utilisateur et un mot de passe
+      description: Crée un nouvel utilisateur avec un surnom et un mot de passe
       requestBody:
         required: true
         content:
@@ -39,14 +39,11 @@ paths:
             schema:
               type: object
               properties:
-                username:
-                  type: string
                 password:
                   type: string
                 nickname:
                   type: string
               required:
-                - username
                 - password
                 - nickname
       responses:
@@ -66,12 +63,9 @@ paths:
             schema:
               type: object
               properties:
-                oldPassword:
-                  type: string
                 newPassword:
                   type: string
               required:
-                - oldPassword
                 - newPassword
       responses:
         '200':
@@ -150,6 +144,13 @@ paths:
       responses:
         '201':
           description: Post créé avec succès
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
         '400':
           description: Contenu du post invalide
 
@@ -331,5 +332,12 @@ paths:
       responses:
         '201':
           description: Commentaire ajouté avec succès
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
         '400':
           description: Contenu du commentaire invalide
